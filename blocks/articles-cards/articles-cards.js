@@ -13,7 +13,7 @@ async function getDataFromJSON(jsonURL) {
     const jsonData = await response.json();
     // Filter data to include only those records with template 'magazine'
     const filteredData = jsonData.data.filter(
-      (item) => item.template === 'magazine'
+      (item) => item.template === 'magazine',
     );
     // Map through filtered data to structure it for the UI
     return filteredData.map((item) => ({
