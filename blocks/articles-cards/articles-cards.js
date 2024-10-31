@@ -1,7 +1,7 @@
-import { createOptimizedPicture } from "../../scripts/aem.js"; // Adjust path as necessary
+import { createOptimizedPicture } from '../../scripts/aem.js'; // Adjust path as necessary
 
 // Select the custom list block container
-const articlesContainer = document.querySelector(".articles-cards.block");
+const articlesContainer = document.querySelector('.articles-cards.block');
 
 // Function to fetch and return filtered JSON data
 async function getDataFromJSON(jsonURL) {
@@ -13,7 +13,7 @@ async function getDataFromJSON(jsonURL) {
     const jsonData = await response.json();
     // Filter data to include only those records with template 'magazine'
     const filteredData = jsonData.data.filter(
-      (item) => item.template === "magazine"
+      (item) => item.template === 'magazine'
     );
     // Map through filtered data to structure it for the UI
     return filteredData.map((item) => ({
@@ -23,7 +23,7 @@ async function getDataFromJSON(jsonURL) {
       link: item.path, // Path for the anchor tag
     }));
   } catch (error) {
-    throw new Error("Error fetching JSON data");
+    throw new Error('Error fetching JSON data');
   }
 }
 
@@ -33,19 +33,19 @@ async function renderCustomList(jsonURL) {
   const data = await getDataFromJSON(jsonURL);
 
   // Clear existing content in the container
-  articlesContainer.innerHTML = "";
+  articlesContainer.innerHTML = '';
 
   // Create a new unordered list to append items
-  const ulElement = document.createElement("ul");
+  const ulElement = document.createElement('ul');
 
   // Iterate through data and append each item to the DOM
   data.forEach((item) => {
-    const listItem = document.createElement("li");
+    const listItem = document.createElement('li');
 
     // Create the image element using createOptimizedPicture
-    const imgDiv = document.createElement("div");
-    imgDiv.className = "cards-card-image";
-    const imgAnchor = document.createElement("a");
+    const imgDiv = document.createElement('div');
+    imgDiv.className = 'cards-card-image';
+    const imgAnchor = document.createElement('a');
     imgAnchor.href = item.link;
 
     // Create optimized picture using the existing function
@@ -54,20 +54,20 @@ async function renderCustomList(jsonURL) {
     imgDiv.appendChild(imgAnchor);
 
     // Create the body section
-    const bodyDiv = document.createElement("div");
-    bodyDiv.className = "cards-card-body";
+    const bodyDiv = document.createElement('div');
+    bodyDiv.className = 'cards-card-body';
 
     // Title (button)
-    const titleContainer = document.createElement("p");
-    titleContainer.className = "button-container";
-    const titleAnchor = document.createElement("a");
+    const titleContainer = document.createElement('p');
+    titleContainer.className = 'button-container';
+    const titleAnchor = document.createElement('a');
     titleAnchor.href = item.link;
     titleAnchor.textContent = item.title;
-    titleAnchor.className = "button";
+    titleAnchor.className = 'button';
     titleContainer.appendChild(titleAnchor);
 
     // Description
-    const descriptionP = document.createElement("p");
+    const descriptionP = document.createElement('p');
     descriptionP.textContent = item.description;
 
     // Append title and description to body
