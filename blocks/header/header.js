@@ -90,7 +90,7 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
     'aria-label',
     expanded ? 'Open navigation' : 'Close navigation'
   );
-  // enable nav dropdown keyboard accessibility
+  // enable nav dropdown keyboard accessibilitymodal
   const navDrops = navSections.querySelectorAll('.nav-drop');
   if (isDesktop.matches) {
     navDrops.forEach((drop) => {
