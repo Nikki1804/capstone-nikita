@@ -1,7 +1,12 @@
 import { createOptimizedPicture } from '../../scripts/aem.js'; // Adjust path as necessary
 
 // Select the custom list block container
-const articlesContainer = document.querySelector('.articles-cards.block');
+const articlesContainer = Array.from(document.getElementsByTagName('div')).find(
+  (element) =>
+    element.classList.contains('articles-cards') &&
+    element.classList.contains('block')
+);
+
 
 // Function to fetch and return filtered JSON data
 async function getDataFromJSON(jsonURL) {
